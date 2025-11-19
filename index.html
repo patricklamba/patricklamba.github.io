@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrick Lamba - Java Backend Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007bff; /* Blue accent */
+            --background-color: #ffffff;
+            --text-color: #343a40;
+            --light-grey: #f8f9fa;
+            --dark-grey: #6c757d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--light-grey);
+            color: var(--text-color);
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+            position: relative;
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            background-color: var(--dark-grey); /* Placeholder for image */
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: var(--primary-color);
+        }
+
+        header h2 {
+            margin: 5px 0;
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: var(--dark-grey);
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            background-color: var(--text-color);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        section h3 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        section h3::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+        }
+
+        .card {
+            background-color: var(--background-color);
+            border: 1px solid var(--light-grey);
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.3em;
+        }
+
+        .card p {
+            margin-bottom: 5px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skills-category h4 {
+            color: var(--dark-grey);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 5px;
+        }
+
+        .skills-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-category ul li {
+            background-color: var(--light-grey);
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .contact-info ul li strong {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image"> <!-- Placeholder for eventual image -->
+        <div class="container">
+            <h1>Patrick Lamba</h1>
+            <h2>Java Backend Developer (Medior-Senior)</h2>
+            <p>Java backend developer with 10+ years of experience, now focused on hands-on development with Java, Spring Boot and microservices.</p>
+            <div class="buttons">
+                <a href="[EDIT YOUR CV PDF LINK HERE]" target="_blank">Download CV</a>
+                <a href="https://www.linkedin.com/in/patricklamba/" target="_blank">LinkedIn</a>
+                <a href="mailto:patricklamba@gmail.com">Email Me</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#languages">Languages</a>
+            <a href="#references">References</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h3>About Me</h3>
+            <p>I am a Java Backend Developer with more than 10 years of experience in software engineering, mainly in banking, insurance, public sector and healthcare. After several years in hybrid roles (integration, support, coordination, coaching), I now want to fully focus on a 100% hands-on backend developer position. I specialize in Java, Spring Boot, microservices, REST APIs and SQL. I am motivated to grow technically in a stable, structured environment, particularly in the Luxembourg area, and I bring strong adaptability, analytical thinking and a solid understanding of enterprise systems.</p>
+        </section>
+
+        <section id="skills">
+            <h3>Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skills-category">
+                    <h4>Backend & Languages</h4>
+                    <ul>
+                        <li>Java (16+ years)</li>
+                        <li>Spring, Spring Boot, Spring Security</li>
+                        <li>Hibernate, JPA</li>
+                        <li>REST & SOAP APIs</li>
+                        <li>Microservices architecture</li>
+                        <li>PL/SQL, SQL</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Databases</h4>
+                    <ul>
+                        <li>Oracle</li>
+                        <li>PostgreSQL</li>
+                        <li>SQL Server</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>DevOps / Cloud / Tools</h4>
+                    <ul>
+                        <li>Docker</li>
+                        <li>Git, Gitlab, Gitlab CI/CD, Jenkins</li>
+                        <li>Linux</li>
+                        <li>AWS (basic, ~1 year)</li>
+                        <li>Azure (basic, ~1 year)</li>
+                        <li>ServiceNow</li>
+                        <li>Grafana, Prometheus, Splunk</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Frontend (exposure)</h4>
+                    <ul>
+                        <li>JavaScript, TypeScript</li>
+                        <li>Angular, React (Integration and bug fixing)</li>
+                        <li>Liferay, JSF/PrimeFaces, Vaadin</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Soft Skills</h4>
+                    <ul>
+                        <li>Motivated and persistent</li>
+                        <li>Analytical thinking</li>
+                        <li>Software design and development mindset</li>
+                        <li>Sense of commitment and team spirit</li>
+                        <li>Quick learner</li>
+                        <li>Adaptability</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h3>Professional Experience</h3>
+            <div class="card">
+                <h4>Speos (BPost Group) - Brussels</h4>
+                <p>Full Stack Architect / Tech Lead – Sep 2024 – Dec 2024</p>
+                <ul>
+                    <li>Designed and refined a microservices architecture using Java 17 and Spring Boot for a B2B transactions and e-invoicing platform.</li>
+                    <li>Implemented and documented APIs for bank integrations using REST and SOAP.</li>
+                    <li>Automated deployments with Docker and AWS ECS to improve reliability and delivery speed.</li>
+                    <li>Coached and supported three junior developers, improving code quality with unit tests and best practices.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Elikia Technology - Brussels</h4>
+                <p>Full Stack Architect – Jan 2023 – Jul 2024</p>
+                <ul>
+                    <li>Built an open-data analytics platform for the music industry using Java 17, Spring Boot and Angular 17.</li>
+                    <li>Integrated external data sources (Chartmetrics, Viberate) via REST APIs documented with Swagger.</li>
+                    <li>Implemented JWT-based authentication and role-based access control on the frontend and backend.</li>
+                    <li>Containerized services with Docker and optimized Hibernate queries to improve performance.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Maynsis - Louvain-la-Neuve</h4>
+                <p>Senior Java Developer / PL/SQL Developer – Mar 2023 – Nov 2023</p>
+                <ul>
+                    <li>Maintained and enhanced a core banking platform (F2B) used by seven banks.</li>
+                    <li>Optimized PL/SQL stored procedures, reducing processing latency by around 20%.</li>
+                    <li>Investigated and fixed critical defects in payment processing modules.</li>
+                    <li>Translated business requirements into clear, technical specifications for the development team.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>NN - Brussels</h4>
+                <p>Java Developer & IT Infrastructure – Jan 2022 – Jan 2023</p>
+                <ul>
+                    <li>Upgraded legacy applications from Java 6 to Java 11 in a complex insurance environment.</li>
+                    <li>Maintained and monitored insurance systems using Splunk and Azure DevOps.</li>
+                    <li>Supported integration of SOAP/REST services and contributed to microservices modernization.</li>
+                    <li>Collaborated with operations teams to improve stability and incident resolution.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Baloise - Antwerp</h4>
+                <p>Technical Analyst (Java/CLEVA) – Apr 2021 – Dec 2021</p>
+                <ul>
+                    <li>Designed backend solutions using the CLEVA framework for insurance policy management.</li>
+                    <li>Produced UML diagrams and technical documentation for new features and integrations.</li>
+                    <li>Acted as a bridge between business analysts and developers, clarifying requirements.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Sciensano - Brussels</h4>
+                <p>Senior Full Stack Developer – Jan 2020 – Jun 2020</p>
+                <ul>
+                    <li>Developed forms and data flows for a health data management platform using Angular 7 and Form.io.</li>
+                    <li>Implemented backend services with Java 11 and Spring, integrating with Oracle and REST APIs.</li>
+                    <li>Set up CI/CD pipelines with Jenkins and Ansible to automate deployments.</li>
+                    <li>Coached a junior Java developer and occasionally acted as Scrum Master for a six-person team.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>YPTO / SNCB - Brussels</h4>
+                <p>Java / Scala Engineer – Feb 2018 – Dec 2019</p>
+                <ul>
+                    <li>Migrated ticketing system components from Java 6 to Java 8.</li>
+                    <li>Developed REST services using Scala and Play Framework to modernize legacy modules.</li>
+                    <li>Improved CI/CD processes with Jenkins and OpenShift 4 to streamline deployments.</li>
+                    <li>Supported onboarding of new developers and ensured code quality.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Delta Lloyd Life / NN - Brussels</h4>
+                <p>Senior Java Developer – Oct 2017 – Feb 2018</p>
+                <ul>
+                    <li>Modernized and rebranded an insurance portal built with JSF (PrimeFaces) and Liferay.</li>
+                    <li>Configured Weblogic servers and maintained SOAP/REST web services.</li>
+                    <li>Coached junior Java developers and assisted with troubleshooting complex issues.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Dileoz - Zaventem</h4>
+                <p>Vaadin Java Developer – Jan 2017 – Mar 2017</p>
+                <ul>
+                    <li>Developed Vaadin 7 screens for payroll and wage configuration at Acerta.</li>
+                    <li>Implemented microservices according to established architecture patterns.</li>
+                    <li>Collaborated with the team to ensure consistency and maintainability.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>ANMC - Brussels</h4>
+                <p>Java Consultant (Vaadin + UX) – Sep 2016 – Dec 2016</p>
+                <ul>
+                    <li>Discussed requirements with stakeholders to design appropriate frontend experiences.</li>
+                    <li>Created UI mockups and prototypes using Axure.</li>
+                    <li>Developed Vaadin 7 interfaces and integrated SOAP web services.</li>
+                    <li>Verified and maintained WSDL contracts for reliable data exchange.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Thales - Tubize</h4>
+                <p>Java Developer – Mar 2016 – Jun 2016</p>
+                <ul>
+                    <li>Implemented features for a Key Management System (KMS) in a security-sensitive context.</li>
+                    <li>Designed and developed authentication modules using JavaFX and Spring/Hibernate.</li>
+                    <li>Worked in a Lean Agile environment and contributed to improving development workflows.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>European Commission - Brussels</h4>
+                <p>Java/JEE Developer – Feb 2015 – Mar 2016</p>
+                <ul>
+                    <li>Maintained and improved the Sysper 2 HR management application.</li>
+                    <li>Fixed bugs and handled maintenance for the PER module (employee management).</li>
+                    <li>Secured PDF assessments and supported data migration between databases.</li>
+                    <li>Worked with EJB2/3, Struts1, Spring, Hibernate, Weblogic and Oracle in an Agile setup.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>SPF Justice - Brussels</h4>
+                <p>Java Developer (Medior) – Aug 2013 – Nov 2014</p>
+                <ul>
+                    <li>Contributed to the development of the CJCS Web 2.0 criminal records application.</li>
+                    <li>Generated acknowledgment PDFs and extract request documents.</li>
+                    <li>Managed new judgment bulletin workflows and database changes.</li>
+                    <li>Worked with Spring Bean, Spring Security, Spring Batch, RichFaces, Oracle and Jenkins.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Buy Way - Brussels</h4>
+                <p>Junior Business Analyst – Nov 2011 – Jul 2013</p>
+                <ul>
+                    <li>Worked in a Scrum team on the Phenix project (financial web applications).</li>
+                    <li>Helped migrate legacy Java 1.4/Struts applications to Java 1.6/JEE6.</li>
+                    <li>Created login pages and generic notification components.</li>
+                    <li>Integrated barcodes into PDF contracts and built SOAP web services for Graydon.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>E-H Consulting - Brussels</h4>
+                <p>Java Developer (Junior) – Jun 2008 – Oct 2011</p>
+                <ul>
+                    <li>Developed a three-tier bookstore management application using open-source technologies.</li>
+                    <li>Gained first real-world development experience in an Agile team with strict deadlines.</li>
+                    <li>Worked with Spring, Hibernate, RichFaces, Maven, Jenkins, Weblogic and Oracle.</li>
+                    <li>Was hired permanently after a successful initial engagement.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3>Vibe Coding Projects</h3>
+            <div class="card">
+                <h4>Lezare - Fintech Project (Angola)</h4>
+                <ul>
+                    <li>Designed and developed a mobile app connecting verified employers and domestic workers in Angola.</li>
+                    <li>Implemented a React Frontend and a Spring Boot backend with Firebase integration.</li>
+                    <li>Built secure user verification, digital contracts and payment workflows.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>TrocaSegura - P2P Currency Exchange (Angola)</h4>
+                <ul>
+                    <li>Designed a mobile wallet and peer-to-peer currency exchange concept (USD, EUR, AKZ).</li>
+                    <li>Created product prototypes with Bolt.new and integrated escrow-style transaction flows.</li>
+                    <li>Performed market analysis on local banking constraints and user behavior.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Trading bot in Python</h4>
+                <!-- No specific details provided, placeholder for future addition if needed -->
+            </div>
+        </section>
+
+        <section id="education">
+            <h3>Education</h3>
+            <div class="card">
+                <p>Management Information Systems – EPFC, Brussels</p>
+            </div>
+            <h4>Additional training and certifications:</h4>
+            <div class="card">
+                <ul>
+                    <li>Python (2 weeks 3/2025)</li>
+                    <li>Amigoscode (Linux fundamentals, Spring , Java, SQL )</li>
+                    <li>LinkedIn Learning (Agile foundations, Scrum, OMASP, Groovy, RestAPI, Microservices,DDD, Software architecture ... )(2024)</li>
+                    <li>Software Architecture: Patterns for Developers</li>
+                    <li>Software Architecture: Domain-Driven Design</li>
+                    <li>Java 7 OCA/OCP – Egilia Learning (2014)</li>
+                    <li>Scrum Master – Egilia Learning (2012)</li>
+                    <li>EJB3.1 – Egilia Learning</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="languages">
+            <h3>Languages</h3>
+            <div class="card">
+                <ul>
+                    <li>French – Native</li>
+                    <li>English – Proficient in spoken and written English</li>
+                    <li>Dutch – Basic, able to hold conversations and adapt in a Dutch-speaking environment</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="references">
+            <h3>References</h3>
+            <div class="card">
+				<p>Nellis Miala – CEO , Lezare  – +32 478 94 79 11</p>
+                <p>Gonzalo Pacifique – CEO, Elikia Technologie – +32 498 24 26 25</p>
+                <p>Regis Kersters – Project Manager, Maynsis – +32 474 58 61 52</p>
+                <p>Pote Mponze – Senior JAva Developper, Maynsis – +32 470 57 58 05</p>				
+            </div>
+        </section>
+
+        <section id="contact">
+            <h3>Contact</h3>
+            <div class="contact-info">
+                <ul>
+                    <li><strong>Email:</strong> patricklamba@gmail.com</li>
+                    <li><strong>Phone:</strong> +32 485165777</li>
+                    <li><strong>Location:</strong> Brussels, Belgium – Open to relocation</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 – Patrick Lamba – Java Backend Developer</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
